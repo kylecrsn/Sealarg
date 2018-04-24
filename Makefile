@@ -13,7 +13,7 @@ TEST_DIR = $(ROOT)/test
 BUILD_DIR = $(ROOT)/build
 
 # Executables
-TARGET = $(BUILD_DIR)/simple_usage
+TARGET = $(BUILD_DIR)/sample_usage
 all: $(TARGET)
 
 # Compilation options
@@ -28,7 +28,7 @@ OBJECTS = $(patsubst %.c,%.o,$(wildcard **/*.c))
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) $(CFLAGS_WARN) $(LIBS) -o $@
+	$(CC) $(OBJECTS) $(CFLAGS_WARN) -o $@
 
 clean:
 	-rm -f **/*.o $(TARGET)
