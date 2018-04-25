@@ -1,36 +1,33 @@
-# Base folder path, can be changed to absolute if needed
-ROOT = .
+# Export all variables for the rest of the build system to use
+export
 
-# Source code
-SRC_DIR = $(ROOT)/src
-INCL_DIR = $(ROOT)/include
-
-# Libraries and dependencies
-INCLS = -I $(INCL_DIR)
-
-# Testing
-TEST_DIR = $(ROOT)/test
-BUILD_DIR = $(ROOT)/build
-
-# Executables
-TARGET = $(BUILD_DIR)/sample_usage
-all: $(TARGET)
-
-# Compilation options
+# Commands and options
+MKD = mkdir -p
+RMD = rm -rf
 CC = gcc
-CFLAGS_WARN = -Wall
-CFLAGS_DEBUG = -g
-CFLAGS = $(CFLAGS_WARN) $(CFLAGS_DEBUG) $(INCLS)
-HEADERS = $(wildcard **/*.h)
-OBJECTS = $(patsubst %.c,%.o,$(wildcard **/*.c))
+CFLAGS = -Wall -g
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+# Compilation
+OUT = bin
+SA_SRC = $(wildcard *.c)
+SA_OBJ = $(SA_SRC:.c=.o)
+SA_DIR = $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
-$(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) $(CFLAGS_WARN) -o $@
+.PHONY: all example test clean
+
+all: $(SA_OBJ) example test
+
+$(SA_OBJ): $(SA_SRC)
+	$(MKD) $(OUT)
+	$(CC) -c $(CFLAGS) -I $(SA_DIR) $< -o $(OUT)/$@
+
+example:
+	$(MAKE) -C example
+
+test:
+	$(MAKE) -C test
 
 clean:
-	-rm -f **/*.o $(TARGET)
-
-.PHONY: clean all
+	$(MAKE) -C example clean
+	$(MAKE) -C test clean
+	$(RMD) $(OUT) %.o

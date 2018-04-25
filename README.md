@@ -16,7 +16,7 @@ The sample code below illustrates just how easy Sealarg is to use in 5 steps. He
 
 int main(int argc, char **argv) {
     int i;
-    int count = 0;
+    int count;
     char *str;
 
     // 1. Allocate a SealParser instance
@@ -51,9 +51,9 @@ int main(int argc, char **argv) {
 
 When compiled and run with the `-h`/`--help` option, the following usage statement is automatically built and printed:
 
-```sh
+```
 $ ./sample_program -h
-Usage: [-h] [-m MULTIPLE] STRING
+Usage: sample_program [-h] [-m MULTIPLE] STRING
 Prints a string some number of times
 
 This is a prologue
@@ -74,12 +74,12 @@ Things like missing/excessive arguments, invalid arguments, and basic type/limit
 **To integrate Sealarg into your project:**
 
 - Copy `src/sealarg.c` and `include/sealarg.h` into your project folder and add them as dependenices in your Makefile, just like the rest of your code files
-- Add `#include "selarg.h"` to wherever you'll be dealing with command-line arguments- typically this would be the .c file containing your `main` function
+- Add `#include "sealarg.h"` to wherever you'll be dealing with command-line arguments- typically this would be the .c file containing your `main` function
 - Try compiling to make sure the library can be built alongside your code without any issues. If so, you're ready to start making calls to Sealarg's API and parse some arguments!
 
 *For additional examples, check out [`example/`](example)*
 
-*For the full documentation of Sealarg's API, including its more advanced semantics and finer-grained control, check out [`doc/`](doc)*
+*For full documentation of Sealarg's API, including its more advanced semantics and finer-grained control, check out [`doc/`](doc)*
 
 ## References
 

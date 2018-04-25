@@ -1,5 +1,5 @@
 # Project-specific files/folders
-build/*
+bin/
 NOTES.md
 
 # Object files

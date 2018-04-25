@@ -1,5 +1,5 @@
-#ifndef _SEALARG_H
-#define _SEALARG_H
+#ifndef SEALARG_H
+#define SEALARG_H
 
 #include <stdlib.h>
 #include <stdio.h>
