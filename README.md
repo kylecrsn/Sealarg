@@ -77,9 +77,9 @@ Things like missing/excessive arguments, invalid arguments, and basic type/limit
 - Add `#include "selarg.h"` to wherever you'll be dealing with command-line arguments- typically this would be the .c file containing your `main` function
 - Try compiling to make sure the library can be built alongside your code without any issues. If so, you're ready to start making calls to Sealarg's API and parse some arguments!
 
-*For additional examples, check out [`example/`](https://github.com/carsonkk/Sealarg/tree/master/example)*
+*For additional examples, check out [`example/`](example)*
 
-*For the full documentation of Sealarg's API, including its more advanced semantics and finer-grained control, check out [`doc/`](https://github.com/carsonkk/Sealarg/tree/master/doc)*
+*For the full documentation of Sealarg's API, including its more advanced semantics and finer-grained control, check out [`doc/`](doc)*
 
 ## References
 
